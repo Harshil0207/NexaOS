@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: oklch(0.985 0.002 255);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.97 0.003 255);
+  --surface-3: oklch(0.945 0.004 255);
+  --border: oklch(0.25 0.02 255 / 0.1);
+  --border-strong: oklch(0.25 0.02 255 / 0.18);
+  --fg: oklch(0.21 0.015 255);
+  --muted: oklch(0.47 0.015 255);
+  --faint: oklch(0.6 0.012 255);
+  --accent: oklch(0.56 0.12 205);
+  --accent-fg: oklch(0.99 0 0);
+  --accent-soft: oklch(0.56 0.12 205 / 0.1);
+  --success: oklch(0.56 0.13 155);
+  --warning: oklch(0.62 0.13 70);
+  --danger: oklch(0.56 0.19 25);
+  --info: oklch(0.55 0.13 250);
+  --ring: oklch(0.56 0.12 205 / 0.45);
+  --shadow: 0 1px 2px oklch(0.2 0.02 255 / 0.06), 0 8px 24px -12px oklch(0.2 0.02 255 / 0.12);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: oklch(0.155 0.008 255);
+  --surface: oklch(0.185 0.009 255);
+  --surface-2: oklch(0.215 0.01 255);
+  --surface-3: oklch(0.25 0.011 255);
+  --border: oklch(1 0 0 / 0.075);
+  --border-strong: oklch(1 0 0 / 0.14);
+  --fg: oklch(0.955 0.004 255);
+  --muted: oklch(0.72 0.012 255);
+  --faint: oklch(0.58 0.012 255);
+  --accent: oklch(0.8 0.12 200);
+  --accent-fg: oklch(0.18 0.02 220);
+  --accent-soft: oklch(0.8 0.12 200 / 0.12);
+  --success: oklch(0.78 0.15 155);
+  --warning: oklch(0.83 0.14 80);
+  --danger: oklch(0.7 0.18 25);
+  --info: oklch(0.76 0.12 250);
+  --ring: oklch(0.8 0.12 200 / 0.5);
+  --shadow: 0 1px 2px oklch(0 0 0 / 0.4), 0 12px 32px -16px oklch(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --radius-panel: 10px;
+  --radius-control: 8px;
+  --shadow-panel: var(--shadow);
+  --animate-fade-in: fade-in 180ms ease-out both;
+  --animate-pulse-dot: pulse-dot 1.4s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  ::selection {
+    background: var(--accent-soft);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

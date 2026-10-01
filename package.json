@@ -1,0 +1,27 @@
+{
+  "name": "nexaos",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,worker,web -c cyan,magenta,green \"pnpm --filter @nexa/api dev\" \"pnpm --filter @nexa/api dev:worker\" \"pnpm --filter @nexa/web dev\"",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "test:e2e": "pnpm --filter @nexa/web test:e2e",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:migrate": "pnpm --filter @nexa/api db:migrate",
+    "db:deploy": "pnpm --filter @nexa/api db:deploy",
+    "db:seed": "pnpm --filter @nexa/api db:seed",
+    "predev": "pnpm --filter @nexa/shared build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.4",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.3"
+  }
+}

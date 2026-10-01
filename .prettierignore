@@ -1,0 +1,12 @@
+node_modules
+dist
+.next
+coverage
+pnpm-lock.yaml
+apps/api/prisma/migrations
+playwright-report
+test-results
+apps/web/.next
+apps/web/next-env.d.ts
+**/drizzle/meta
+*.md
